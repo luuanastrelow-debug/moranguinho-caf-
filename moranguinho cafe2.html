@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moranguinho Café ♡</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #fff8ef;
+            color: #704640;
+            font-family: "Trebuchet MS", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top {
+            background: #d94358;
+            color: white;
+            padding: 11px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 20px 7%;
+            background: #fffaf2;
+            border-bottom: 2px dashed #f1c5cc;
+        }
+
+        .logo {
+            color: #cf4057;
+            font-family: Georgia, serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .links {
+            display: flex;
+            gap: 18px;
+            font-size: 13px;
+        }
+
+        .links a:hover {
+            color: #d94358;
+        }
+
+        .pill {
+            background: #fbdde4;
+            color: #bd354e;
+            border-radius: 30px;
+            padding: 11px 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .hero {
+            padding: 65px 7%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 30px;
+            background: #ffe8ed;
+            overflow: hidden;
+        }
+
+        .label {
+            display: inline-block;
+            background: white;
+            border-radius: 30px;
+            padding: 9px 14px;
+            color: #ce4057;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            color: #cc3d54;
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        h1 em {
+            color: #794c42;
+        }
+
+        .description {
+            line-height: 1.9;
+            max-width: 430px;
+            font-size: 15px;
+            margin-bottom: 27px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #d94358;
+            color: white;
+            border-radius: 30px;
+            padding: 15px 23px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 6px 0 #b93149;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 #b93149;
+        }
+
+        .art {
+            position: relative;
+            min-height: 330px;
+            display: grid;
+            place-items: center;
+        }
+
+        .circle {
+            width: min(320px, 75vw);
+            height: 320px;
+            background: #fff4d7;
+            border: 8px solid white;
+            border-radius: 48% 52% 43% 57%;
+            display: grid;
+            place-items: center;
+            transform: rotate(-5deg);
+            box-shadow: 0 15px 35px #d9435818;
+        }
+
+        .cake {
+            font-size: clamp(100px, 17vw, 165px);
+            transform: rotate(5deg);
+            filter: drop-shadow(0 8px 5px #8b514322);
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 37px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .h1 {
+            top: 10px;
+            right: 5px;
+        }
+
+        .h2 {
+            bottom: 20px;
+            left: 0;
+            animation-delay: 1s;
+        }
+
+        .h3 {
+            top: 25px;
+            left: 15px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-13px) rotate(8deg);
+            }
+        }
+
+        .tape {
+            text-align: center;
+            background: #fff0c9;
+            padding: 15px;
+            color: #b33b4f;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .features {
+            padding: 55px 7%;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: Georgia, serif;
+            color: #ca4055;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .feature {
+            background: white;
+            border: 1px solid #f3d8d9;
+            border-radius: 23px;
+            padding: 26px 12px;
+        }
+
+        .feature span {
+            font-size: 37px;
+        }
+
+        .feature h3 {
+            color: #c53b52;
+            margin: 12px 0 8px;
+        }
+
+        .feature p {
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #d94358;
+            color: white;
+            text-align: center;
+            padding: 27px 15px;
+            line-height: 2;
+            font-size: 12px;
+        }
+
+        @media(max-width:650px) {
+            nav {
+                justify-content: center;
+            }
+
+            .links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 45px 7%;
+            }
+
+            .description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .art {
+                min-height: 280px;
+            }
+
+            .circle {
+                height: 260px;
+                width: 260px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">🍓 UM PEDACINHO DE FELICIDADE EM CADA DOCE ♡</div>
+
+    <nav>
+        <a class="logo" href="moranguinho cafe2.html">🍓 Moranguinho Café</a>
+        <div class="links">
+            <a href="moranguinho cafe2.html">Início</a>
+            <a href="cardapio kawaii.html">Cardápio</a>
+            <a href="sacoliha fofuxa.html">Sacolinha</a>
+        </div>
+        <a class="pill" href="sacoliha fofuxa.html">♡ Minha sacolinha</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div>
+                <span class="label">✿ FEITO COM AMOR E MORANGOS ✿</span>
+                <h1>Um mundo de<br><em>docinhos</em><br>e carinho!</h1>
+                <p class="description">
+                    Bolinhos fofinhos, cookies deliciosos e bebidas cor-de-rosa.
+                    Entre, fique à vontade e escolha sua felicidade açucarada! 🎀
+                </p>
+                <a class="button" href="cardapio kawaii.html">Conhecer o cardápio ♡ →</a>
+            </div>
+
+            <div class="art">
+                <span class="heart h1">♡</span>
+                <span class="heart h2">🍓</span>
+                <span class="heart h3">✿</span>
+                <div class="circle"><span class="cake">🍰</span></div>
+            </div>
+        </section>
+
+        <div class="tape">♡ BOLOS · COOKIES · BEBIDAS · DOCINHOS ♡</div>
+
+        <section class="features">
+            <h2>Um café cheio de amor!</h2>
+            <p class="subtitle">Pequenos detalhes que deixam tudo mais gostoso. 🍓</p>
+
+            <div class="feature-grid">
+                <article class="feature">
+                    <span>🍰</span>
+                    <h3>Bolinhos</h3>
+                    <p>Camadas fofinhas e coberturas irresistíveis.</p>
+                </article>
+
+                <article class="feature">
+                    <span>🍓</span>
+                    <h3>Feito com carinho</h3>
+                    <p>Docinhos delicados para alegrar seu dia.</p>
+                </article>
+
+                <article class="feature">
+                    <span>☕</span>
+                    <h3>Pausa gostosa</h3>
+                    <p>Um cantinho doce para aproveitar sem pressa.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <strong>🍓 Moranguinho Café ♡</strong><br>
+        Um docinho de carinho para você!<br>
+        Projeto fictício feito com amor 🎀
+    </footer>
+</body>
+
+</html>

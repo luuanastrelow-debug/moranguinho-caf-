@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Sacolinha | Moranguinho Café 🎀</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #fff8ef;
+            color: #704640;
+            font-family: "Trebuchet MS", sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            background: #fffaf2;
+            border-bottom: 2px dashed #f1c5cc;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            font-weight: bold;
+            color: #cc3d54;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            font-size: 13px;
+        }
+
+        nav a:hover {
+            color: #d94358;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: #ffe6eb;
+        }
+
+        .hero .icon {
+            font-size: 46px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 5vw, 46px);
+            color: #cc3d54;
+            margin: 8px 0 12px;
+        }
+
+        .hero p {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 35px 20px 65px;
+            margin: auto;
+        }
+
+        .paper {
+            background: white;
+            border: 1px solid #f2d6d9;
+            border-radius: 25px;
+            padding: 24px;
+            box-shadow: 0 10px 30px #d943580c;
+        }
+
+        .paper h2 {
+            color: #cc3d54;
+            font-family: Georgia, serif;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px dashed #efd1d4;
+        }
+
+        .item h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .item p {
+            color: #9b7c72;
+            font-size: 12px;
+        }
+
+        .item-price {
+            color: #c43d53;
+            font-weight: bold;
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .small-btn {
+            border: 1px solid #f0c8ce;
+            background: #fff0f3;
+            color: #b9344d;
+            border-radius: 12px;
+            width: 33px;
+            height: 33px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quantity {
+            font-weight: bold;
+            min-width: 15px;
+            text-align: center;
+        }
+
+        .remove {
+            border: none;
+            background: none;
+            color: #b33b4f;
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .summary {
+            background: #fff5df;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .line {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 9px 0;
+            font-size: 14px;
+        }
+
+        .total {
+            border-top: 1px dashed #e6c4b2;
+            margin-top: 8px;
+            padding-top: 17px;
+            font-weight: bold;
+            font-size: 19px;
+            color: #c53c53;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 30px;
+            padding: 14px 20px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .back {
+            background: #ffe4ea;
+            color: #b9344d;
+        }
+
+        .checkout {
+            background: #d94358;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: .85;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .empty .emoji {
+            font-size: 75px;
+            margin-bottom: 15px;
+        }
+
+        .empty h3 {
+            color: #c53c53;
+            font-family: Georgia, serif;
+            font-size: 24px;
+        }
+
+        .empty p {
+            margin: 12px 0 22px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .note {
+            color: #99796f;
+            font-size: 11px;
+            line-height: 1.8;
+            margin-top: 17px;
+            text-align: center;
+        }
+
+        footer {
+            background: #d94358;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        #message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #704640;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s;
+            width: max-content;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        #message.show {
+            opacity: 1;
+        }
+
+        @media(max-width:550px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .paper {
+                padding: 17px;
+            }
+
+            .item {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                justify-content: flex-start;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a class="logo" href="inicio.html">🍓 Moranguinho Café</a>
+        <nav>
+            <a href="inicio.html">Início</a>
+            <a href="cardapio kawaii.html">Cardápio</a>
+            <a href="sacolinha.html">Sacolinha</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="icon">🧺🎀</div>
+        <h1>Minha sacolinha</h1>
+        <p>Suas fofuras escolhidas estão esperando por você. ♡</p>
+    </section>
+
+    <main class="container">
+        <section class="paper">
+            <h2>Seu pedido 🍓</h2>
+            <div id="cartContents"></div>
+            <div id="summary"></div>
+        </section>
+
+        <p class="note">
+            ♡ Loja fictícia para projeto de site. O botão de finalizar demonstra
+            o resumo do pedido, mas não realiza pagamento nem envia encomendas.
+        </p>
+    </main>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <footer>
+        🍓 Moranguinho Café ♡<br>
+        Feito com açúcar, carinho e um montão de morangos!
+    </footer>
+
+    <script>
+        'use strict';
+
+        const STORAGE_KEY = 'moranguinhoCafeCart';
+        const contents = document.getElementById('cartContents');
+        const summary = document.getElementById('summary');
+        const message = document.getElementById('message');
+
+        let messageTimer;
+
+        function readCart() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                const data = raw ? JSON.parse(raw) : [];
+
+                if (!Array.isArray(data)) return [];
+
+                return data.filter(item =>
+                    item &&
+                    typeof item.id === 'string' &&
+                    typeof item.name === 'string' &&
+                    Number.isFinite(item.price) &&
+                    item.price >= 0 &&
+                    Number.isInteger(item.quantity) &&
+                    item.quantity > 0
+                );
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveCart(cart) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+                return true;
+            } catch (error) {
+                showMessage('Não foi possível salvar as alterações. ♡');
+                return false;
+            }
+        }
+
+        function money(value) {
+            return value.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+
+        function showMessage(text) {
+            message.textContent = text;
+            message.classList.add('show');
+
+            clearTimeout(messageTimer);
+            messageTimer = setTimeout(() => {
+                message.classList.remove('show');
+            }, 2500);
+        }
+
+        function renderCart() {
+            const cart = readCart();
+
+            if (cart.length === 0) {
+                contents.innerHTML = `
+      <div class="empty">
+        <div class="emoji">🧺🍓</div>
+        <h3>Ops, cadê os docinhos?</h3>
+        <p>Sua sacolinha ainda está vazia!<br>
+        Vamos escolher algumas delícias?</p>
+        <a class="btn checkout" href="cardapio kawaii.html">
+          Explorar o cardápio ♡
+        </a>
+      </div>
+    `;
+
+                summary.innerHTML = '';
+                return;
+            }
+
+            contents.innerHTML = cart.map(item => `
+    <article class="item">
+      <div>
+        <h3>${escapeHTML(item.name)} ♡</h3>
+        <p>${money(item.price)} por unidade</p>
+        <div class="item-price">
+          ${money(item.price * item.quantity)}
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="small-btn" data-action="minus"
+          data-id="${escapeHTML(item.id)}"
+          aria-label="Diminuir quantidade">−</button>
+
+        <span class="quantity">${item.quantity}</span>
+
+        <button class="small-btn" data-action="plus"
+          data-id="${escapeHTML(item.id)}"
+          aria-label="Aumentar quantidade">+</button>
+
+        <button class="remove" data-action="remove"
+          data-id="${escapeHTML(item.id)}">Remover</button>
+      </div>
+    </article>
+  `).join('');
+
+            const subtotal = cart.reduce(
+                (total, item) => total + item.price * item.quantity, 0
+            );
+
+            const quantity = cart.reduce(
+                (total, item) => total + item.quantity, 0
+            );
+
+            summary.innerHTML = `
+    <div class="summary">
+      <div class="line">
+        <span>Docinhos (${quantity} itens)</span>
+        <strong>${money(subtotal)}</strong>
+      </div>
+      <div class="line">
+        <span>Entrega</span>
+        <span>A combinar</span>
+      </div>
+      <div class="line total">
+        <span>Subtotal</span>
+        <span>${money(subtotal)}</span>
+      </div>
+      <p class="note">O valor da entrega não está incluído.</p>
+    </div>
+
+    <div class="actions">
+      <a class="btn back" href="cardapio kawaii.html">← Escolher mais docinhos</a>
+      <button class="btn checkout" id="finish">
+        Finalizar pedido ♡
+      </button>
+    </div>
+  `;
+
+            document.getElementById('finish').addEventListener('click', () => {
+                const latestCart = readCart();
+
+                if (latestCart.length === 0) {
+                    renderCart();
+                    return;
+                }
+
+                const lines = latestCart.map(item =>
+                    item.quantity + 'x ' + item.name + ' - ' +
+                    money(item.price * item.quantity)
+                );
+
+                const total = latestCart.reduce(
+                    (sum, item) => sum + item.price * item.quantity, 0
+                );
+
+                alert(
+                    '🍓 RESUMO DO SEU PEDIDO ♡\n\n' +
+                    lines.join('\n') +
+                    '\n\nSubtotal: ' + money(total) +
+                    '\n\nEste é um pedido demonstrativo. ' +
+                    'Nenhum pagamento foi realizado.'
+                );
+            });
+        }
+
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, character => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[character]);
+        }
+
+        contents.addEventListener('click', event => {
+            const button = event.target.closest('button[data-action]');
+            if (!button) return;
+
+            const id = button.dataset.id;
+            const action = button.dataset.action;
+            const cart = readCart();
+            const item = cart.find(product => product.id === id);
+
+            if (!item) {
+                renderCart();
+                return;
+            }
+
+            if (action === 'plus') {
+                item.quantity += 1;
+            } else if (action === 'minus') {
+                item.quantity -= 1;
+
+                if (item.quantity <= 0) {
+                    const index = cart.findIndex(product => product.id === id);
+                    cart.splice(index, 1);
+                }
+            } else if (action === 'remove') {
+                const index = cart.findIndex(product => product.id === id);
+                cart.splice(index, 1);
+            }
+
+            if (saveCart(cart)) {
+                renderCart();
+                showMessage('Sacolinha atualizada! 🎀');
+            }
+        });
+
+        window.addEventListener('storage', event => {
+            if (event.key === STORAGE_KEY) {
+                renderCart();
+            }
+        });
+
+        renderCart();
+    </script>
+</body>
+
+</html>
